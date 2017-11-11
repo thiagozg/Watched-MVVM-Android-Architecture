@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+project.ext {
+    androidSupportVersion = '26.1.0'
+    constraintVersion = '1.0.2'
+    okHttpVersion = '3.6.0'
+    retrofitVersion = '2.1.0'
+    rxRetrofitAdapter = '2.2.0'
+    rxJavaVersion = '2.1.0'
+    rxAndroidVersion = '2.0.1'
+    daggerVersion = '2.11'
+    glideVersion = '4.2.0'
+    lifecycleVersion = '1.0.0'
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "br.com.watched"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "ENDPOINT", "\"http://www.omdbapi.com/\""
+        buildConfigField "String", "API_KEY", "\"b306a4ed\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    kapt {
+        generateStubs = true
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+
+    implementation "com.android.support:appcompat-v7:$project.androidSupportVersion"
+    implementation "com.android.support:support-v4:$project.androidSupportVersion"
+    implementation "com.android.support:design:$project.androidSupportVersion"
+    implementation "com.android.support:recyclerview-v7:$project.androidSupportVersion"
+    implementation "com.android.support.constraint:constraint-layout:$project.constraintVersion"
+
+    implementation "android.arch.lifecycle:runtime:$project.lifecycleVersion"
+    implementation "android.arch.lifecycle:extensions:$project.lifecycleVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$project.lifecycleVersion"
+
+    implementation "com.squareup.okhttp3:okhttp:$project.okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$project.okHttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$project.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$project.rxRetrofitAdapter"
+    implementation "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroidVersion"
+
+    kapt "com.google.dagger:dagger-compiler:$project.daggerVersion"
+    implementation "com.google.dagger:dagger:$project.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$project.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$project.daggerVersion"
+
+    implementation "com.github.bumptech.glide:glide:$project.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$project.glideVersion"
+
+
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
