@@ -24,7 +24,6 @@ class SearchViewModel(private val useCase: OmdbUseCase) : ViewModel() {
         loadResultList(useCase.searchByQuery(query))
     }
 
-    // todo : se isso funciona de maneira generica, estudar fazer um BaseViewModel
     fun getResponse(): MutableLiveData<ApiResponse<SearchResponse>> {
         return viewResponse
     }

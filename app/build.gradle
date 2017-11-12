@@ -70,7 +70,7 @@ dependencies {
 
     implementation "android.arch.lifecycle:runtime:$project.lifecycleVersion"
     implementation "android.arch.lifecycle:extensions:$project.lifecycleVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$project.lifecycleVersion"
+    kapt "android.arch.lifecycle:compiler:$project.lifecycleVersion"
 
     implementation "com.squareup.okhttp3:okhttp:$project.okHttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$project.okHttpVersion"
@@ -87,7 +87,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$project.daggerVersion"
 
     implementation "com.github.bumptech.glide:glide:$project.glideVersion"
-    annotationProcessor "com.github.bumptech.glide:compiler:$project.glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$project.glideVersion"
 
 
 //    testImplementation 'junit:junit:4.12'

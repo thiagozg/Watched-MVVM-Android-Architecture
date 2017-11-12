@@ -11,9 +11,9 @@ class SearchResponse (@SerializedName("totalResults")
                       @SerializedName("Response")
                       val response: String,
                       @SerializedName("Search")
-                      val search: List<SearchVO>) {
+                      val resultList: List<ResultVO>) {
 
-    class SearchVO (
+    class ResultVO(
             @SerializedName("Title")
             val title: String,
             @SerializedName("Year")

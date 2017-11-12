@@ -3,6 +3,7 @@ package br.com.watched.di.modules
 import android.app.Application
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import br.com.watched.CustomApplication
 import br.com.watched.features.search.SearchModule
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -21,13 +22,13 @@ class NetModule {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(app: Application): SharedPreferences {
+    fun provideSharedPreferences(app: CustomApplication): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(app)
     }
 
     @Provides
     @Singleton
-    fun provideHttpCache(app: Application): Cache {
+    fun provideHttpCache(app: CustomApplication): Cache {
         val cacheSize = 10 * 1024 * 1024
 
         return Cache(app.cacheDir, cacheSize.toLong())
