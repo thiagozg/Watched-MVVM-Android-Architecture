@@ -2,6 +2,7 @@ package br.com.watched.model.repository
 
 import br.com.watched.model.api.OmdbApi
 import br.com.watched.model.pojo.SearchResponse
+import com.google.gson.JsonObject
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -16,6 +17,10 @@ class OmdbRepository
 
     fun searchByQuery(query: String): Single<SearchResponse> {
         return omdbApi.searchByQuery(query)
+    }
+
+    fun getDetailsByImdbID(imdbId: String): Single<JsonObject> {
+        return omdbApi.getDetailsByImdbID(imdbId)
     }
 
 }

@@ -2,6 +2,7 @@ package br.com.watched.features.search
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import br.com.watched.base.BaseViewModel
 import br.com.watched.model.interactor.OmdbUseCase
 import br.com.watched.model.pojo.SearchResponse
 import br.com.watched.model.api.ApiResponse
@@ -14,13 +15,12 @@ import io.reactivex.disposables.CompositeDisposable
  */
 
 // extends from AndroidViewModel if you need the application context.
-class SearchViewModel(private val useCase: OmdbUseCase) : ViewModel() {
+class HomeViewModel(private val useCase: OmdbUseCase) : BaseViewModel() {
 
-    private val disposables = CompositeDisposable()
     private val viewResponse = MutableLiveData<ApiResponse<SearchResponse>>()
 
     fun searchByQuery(query: String) {
-        loadResultList(useCase.searchByQuery(query))
+        loadResultList(useCase.requestSearchByQuery(query))
     }
 
     fun getResponse(): MutableLiveData<ApiResponse<SearchResponse>> {
@@ -33,14 +33,9 @@ class SearchViewModel(private val useCase: OmdbUseCase) : ViewModel() {
                 .observeOn(SchedulersFacade.ui())
                 .doOnSubscribe { viewResponse.value = ApiResponse.loading(true) } // while is requesting
                 .doAfterTerminate { viewResponse.value = ApiResponse.loading(false) } // after response is ready
-                .subscribe( { apiResponse -> viewResponse.value = ApiResponse.success(apiResponse) },
+                .subscribe( { searchResponse -> viewResponse.value = ApiResponse.success(searchResponse) },
                             { throwable -> viewResponse.value = ApiResponse.error(throwable) })
         )
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        disposables.dispose()
     }
 
 }

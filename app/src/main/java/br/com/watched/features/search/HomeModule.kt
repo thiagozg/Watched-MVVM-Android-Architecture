@@ -7,7 +7,7 @@ import dagger.Module
  */
 
 @Module
-class SearchModule {
+class HomeModule {
 
     // add the @Provides here if is necessary
 

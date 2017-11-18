@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.watched.features.search.SearchActivity"
+    tools:context="br.com.watched.features.search.HomeActivity"
     android:id="@+id/cl_activity_main">
 
     <FrameLayout

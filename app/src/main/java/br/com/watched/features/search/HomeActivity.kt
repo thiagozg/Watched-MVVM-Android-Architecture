@@ -2,6 +2,7 @@ package br.com.watched.features.search
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
@@ -10,24 +11,27 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import br.com.watched.R
+import br.com.watched.base.BaseActivity
+import br.com.watched.features.details.DetailsActivity
 import br.com.watched.model.pojo.SearchResponse
 import br.com.watched.model.api.ApiResponse
 import br.com.watched.model.api.Status.*
+import br.com.watched.util.Constants.KEY_IMDB_ID
 import br.com.watched.util.UIListeners
 import br.com.watched.util.closeKeyboard
-import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_consult.*
+import org.parceler.Parcels
 
-class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners.OnClickListener {
+class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners.OnClickListener {
 
-    private var viewModel: SearchViewModel? = null
+    private var viewModel: HomeViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_consult)
-
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
+        viewModel = ViewModelProviders
+                        .of(this, viewModelFactory)
+                        .get(HomeViewModel::class.java)
 
         observeSearchResponse()
     }
@@ -38,14 +42,15 @@ class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListene
         })
     }
 
-    override fun processResponse(response: ApiResponse<SearchResponse>) {
+    override fun processResponse(response: ApiResponse<*>) {
         when (response.status) {
             SUCCESS -> {
-                rv_result_search_list.layoutManager = LinearLayoutManager(this)
-                rv_result_search_list.setHasFixedSize(true)
-
-                val adapter = SearchAdapter(response.data!!, this, this)
-                rv_result_search_list.adapter = adapter
+                if (response.data is SearchResponse) {
+                    val adapter = HomeAdapter(response.data, this, this)
+                    rv_result_search_list.layoutManager = LinearLayoutManager(this)
+                    rv_result_search_list.setHasFixedSize(true)
+                    rv_result_search_list.adapter = adapter
+                } else Log.e(localClassName, "Unknown success json response.")
             }
 
             ERROR -> {
@@ -61,7 +66,9 @@ class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListene
     }
 
     override fun onClick(resultVO: SearchResponse.ResultVO) {
-        TODO("levar para a tela de detalhes")
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra(KEY_IMDB_ID, Parcels.wrap(resultVO.imdbID))
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -76,8 +83,8 @@ class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListene
             }
 
             override fun onMenuItemActionCollapse(menuItem: MenuItem): Boolean {
-                this@SearchActivity.closeKeyboard()
-                processResponse(ApiResponse(LOADING, isLoading = false))
+                this@HomeActivity.closeKeyboard()
+                processResponse(ApiResponse(LOADING, data = null, isLoading = false))
                 return true
             }
         })

@@ -1,10 +1,8 @@
 package br.com.watched.di.modules
 
-import android.app.Application
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import br.com.watched.CustomApplication
-import br.com.watched.features.search.SearchModule
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

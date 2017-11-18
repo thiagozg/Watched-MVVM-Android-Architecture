@@ -14,11 +14,11 @@ import kotlinx.android.synthetic.main.item_view.view.*
 /**
  * Created by thiagozg on 12/11/2017.
  */
-class SearchAdapter (
+class HomeAdapter(
     private val searchResponse: SearchResponse,
     private val context: Context,
     private val listener: UIListeners.OnClickListener)
-        : RecyclerView.Adapter<SearchAdapter.ResultHolder>() {
+        : RecyclerView.Adapter<HomeAdapter.ResultHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultHolder {
             val itemView = LayoutInflater.from(parent.context)
@@ -50,7 +50,7 @@ class SearchAdapter (
                 itemView.tv_title.text = vo.title
                 itemView.tv_description.text =
                         "${context.getString(R.string.type)}: ${vo.type} - " +
-                        "${context.getString(R.string.type)}: ${vo.year}"
+                        "${context.getString(R.string.year)}: ${vo.year}"
             }
 
         }

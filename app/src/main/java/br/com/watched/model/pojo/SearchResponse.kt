@@ -7,14 +7,15 @@ import java.util.ArrayList
  * Created by thiagozg on 11/11/2017.
  */
 
-class SearchResponse (@SerializedName("totalResults")
-                      val totalResults: String = "0",
-                      @SerializedName("Response")
-                      val response: String = "",
-                      @SerializedName("Search")
-                      val resultList: List<ResultVO> = ArrayList()) {
+data class SearchResponse (
+            @SerializedName("totalResults")
+            val totalResults: String = "0",
+            @SerializedName("Response")
+            val response: String = "",
+            @SerializedName("Search")
+            val resultList: List<ResultVO> = ArrayList()) {
 
-    class ResultVO(
+    data class ResultVO(
             @SerializedName("Title")
             val title: String = "",
             @SerializedName("Year")

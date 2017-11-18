@@ -13,15 +13,15 @@ constructor(val status: Status, val data: T? = null,
     companion object {
 
         fun <T> success(data: T): ApiResponse<T> {
-            return ApiResponse(SUCCESS, data, null)
+            return ApiResponse(SUCCESS, data)
         }
 
         fun <T> error(error: Throwable): ApiResponse<T> {
-            return ApiResponse(ERROR, null, error)
+            return ApiResponse(ERROR, error = error)
         }
 
         fun <T> loading(isLoading: Boolean): ApiResponse<T> {
-            return ApiResponse(LOADING, null, null, isLoading)
+            return ApiResponse(LOADING, isLoading = isLoading)
         }
 
     }
