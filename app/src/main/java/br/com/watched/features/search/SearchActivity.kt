@@ -3,30 +3,22 @@ package br.com.watched.features.search
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import br.com.watched.R
 import br.com.watched.model.pojo.SearchResponse
-import br.com.watched.model.viewmodel.ApiResponse
-import br.com.watched.model.viewmodel.Status.ERROR
-import br.com.watched.model.viewmodel.Status.SUCCESS
-import br.com.watched.model.viewmodel.ViewModelFactory
+import br.com.watched.model.api.ApiResponse
+import br.com.watched.model.api.Status.*
 import br.com.watched.util.UIListeners
 import br.com.watched.util.closeKeyboard
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_consult.*
-import javax.inject.Inject
 
-class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, UIListeners.OnClickListener {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+class SearchActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners.OnClickListener {
 
     private var viewModel: SearchViewModel? = null
 
@@ -37,14 +29,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, UILi
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
 
-        observeLoadingStatus()
         observeSearchResponse()
-    }
-
-    private fun observeLoadingStatus() {
-        viewModel?.getLoadingStatus()?.observe(this, Observer<Boolean> {
-            isLoading -> isLoading?.let { processLoadingStatus(it) }
-        })
     }
 
     private fun observeSearchResponse() {
@@ -53,12 +38,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, UILi
         })
     }
 
-    private fun processLoadingStatus(isLoading: Boolean) {
-        rv_result_search_list.visibility = if (isLoading) View.GONE else View.VISIBLE
-        loading_indicator.visibility = if (isLoading) View.VISIBLE else View.GONE
-    }
-
-    private fun processResponse(response: ApiResponse<SearchResponse>) {
+    override fun processResponse(response: ApiResponse<SearchResponse>) {
         when (response.status) {
             SUCCESS -> {
                 rv_result_search_list.layoutManager = LinearLayoutManager(this)
@@ -71,6 +51,11 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, UILi
             ERROR -> {
                 Log.e(localClassName, response.error?.message, response.error)
                 Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
+            }
+
+            LOADING -> {
+                Log.d(localClassName, "The request is loading...")
+                processLoadingStatus(rv_result_search_list, loading_indicator, response.isLoading)
             }
         }
     }
@@ -92,6 +77,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, UILi
 
             override fun onMenuItemActionCollapse(menuItem: MenuItem): Boolean {
                 this@SearchActivity.closeKeyboard()
+                processResponse(ApiResponse(LOADING, isLoading = false))
                 return true
             }
         })
@@ -100,6 +86,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, UILi
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {
+        closeKeyboard()
         viewModel?.searchByQuery(query)
         return true
     }

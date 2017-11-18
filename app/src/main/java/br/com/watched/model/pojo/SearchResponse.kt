@@ -1,28 +1,29 @@
 package br.com.watched.model.pojo
 
 import com.google.gson.annotations.SerializedName
+import java.util.ArrayList
 
 /**
  * Created by thiagozg on 11/11/2017.
  */
 
 class SearchResponse (@SerializedName("totalResults")
-                      val totalResults: String,
+                      val totalResults: String = "0",
                       @SerializedName("Response")
-                      val response: String,
+                      val response: String = "",
                       @SerializedName("Search")
-                      val resultList: List<ResultVO>) {
+                      val resultList: List<ResultVO> = ArrayList()) {
 
     class ResultVO(
             @SerializedName("Title")
-            val title: String,
+            val title: String = "",
             @SerializedName("Year")
-            val year: String,
+            val year: String = "",
             @SerializedName("imdbID")
-            val imdbID: String,
+            val imdbID: String = "",
             @SerializedName("Type")
-            val type: String,
+            val type: String = "",
             @SerializedName("Poster")
-            val poster: String
+            val poster: String = ""
     )
 }

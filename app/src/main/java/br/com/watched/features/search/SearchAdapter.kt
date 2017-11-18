@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.item_view.view.*
 class SearchAdapter (
     private val searchResponse: SearchResponse,
     private val context: Context,
-    private val listener: UIListeners.OnClickListener) : RecyclerView.Adapter<SearchAdapter.ResultHolder>() {
+    private val listener: UIListeners.OnClickListener)
+        : RecyclerView.Adapter<SearchAdapter.ResultHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultHolder {
             val itemView = LayoutInflater.from(parent.context)
@@ -39,7 +40,7 @@ class SearchAdapter (
         }
 
         override fun getItemCount(): Int {
-            return searchResponse.totalResults.toInt()
+            return searchResponse.resultList.size
         }
 
         class ResultHolder(view: View, val context: Context) : RecyclerView.ViewHolder(view) {
@@ -48,7 +49,8 @@ class SearchAdapter (
                 itemView.iv_channel_mini.loadCircleGlide(vo.poster)
                 itemView.tv_title.text = vo.title
                 itemView.tv_description.text =
-                        String.format(context.getString(R.string.item_description), vo.type, vo.year)
+                        "${context.getString(R.string.type)}: ${vo.type} - " +
+                        "${context.getString(R.string.type)}: ${vo.year}"
             }
 
         }
