@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import br.com.watched.R
 import br.com.watched.model.pojo.SearchResponse
 import br.com.watched.util.UIListeners
-import br.com.watched.util.loadCircleGlide
+import br.com.watched.util.loadGlide
 import kotlinx.android.synthetic.main.item_view.view.*
 
 /**
@@ -46,7 +46,7 @@ class HomeAdapter(
         class ResultHolder(view: View, val context: Context) : RecyclerView.ViewHolder(view) {
 
             fun bindData(vo: SearchResponse.ResultVO) {
-                itemView.iv_channel_mini.loadCircleGlide(vo.poster)
+                itemView.iv_channel_mini.loadGlide(vo.poster)
                 itemView.tv_title.text = vo.title
                 itemView.tv_description.text =
                         "${context.getString(R.string.type)}: ${vo.type} - " +

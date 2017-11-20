@@ -28,15 +28,14 @@ fun Activity.closeKeyboard() {
     }
 }
 
-fun ImageView.loadCircleGlide(url: String? = null) {
-    Glide.with(context)
-            .load(url)
-            .apply(RequestOptions.circleCropTransform())
-            .into(this)
+fun ImageView.loadGlide(url: String? = null, isCircleCrop: Boolean = true) {
+    val imageLoaded = Glide.with(context).load(url)
+    if (isCircleCrop) imageLoaded.apply(RequestOptions.circleCropTransform())
+    imageLoaded.into(this)
 }
 
 fun JsonObject.deserializeDetails(gson: Gson): DetailsVO {
-    val type = this.get("type").asString
+    val type = this.get("Type").asString
 
     return when {
         type.equals(TYPE_MOVIE) -> DetailsVO(

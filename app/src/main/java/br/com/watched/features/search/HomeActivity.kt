@@ -67,7 +67,7 @@ class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners
 
     override fun onClick(resultVO: SearchResponse.ResultVO) {
         val intent = Intent(this, DetailsActivity::class.java)
-        intent.putExtra(KEY_IMDB_ID, Parcels.wrap(resultVO.imdbID))
+        intent.putExtra(KEY_IMDB_ID, resultVO.imdbID)
         startActivity(intent)
     }
 

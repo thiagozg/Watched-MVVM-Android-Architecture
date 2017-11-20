@@ -3,8 +3,8 @@ package br.com.watched.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.view.View.*
-import br.com.watched.model.pojo.SearchResponse
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import br.com.watched.model.api.ApiResponse
 import br.com.watched.model.viewmodel.ViewModelFactory
 import dagger.android.AndroidInjection

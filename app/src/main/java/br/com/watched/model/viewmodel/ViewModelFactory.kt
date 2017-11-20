@@ -19,7 +19,7 @@ class ViewModelFactory
             modelClass.isAssignableFrom(HomeViewModel::class.java) ->
                 HomeViewModel(useCase) as T
 
-            modelClass.isAssignableFrom(HomeViewModel::class.java) ->
+            modelClass.isAssignableFrom(DetailsViewModel::class.java) ->
                 DetailsViewModel(useCase) as T
 
             else -> throw IllegalArgumentException("Unknown ViewModel class")
