@@ -20,9 +20,5 @@ constructor(val status: Status, val data: T? = null,
             return ApiResponse(ERROR, error = error)
         }
 
-        fun <T> loading(isLoading: Boolean): ApiResponse<T> {
-            return ApiResponse(LOADING, isLoading = isLoading)
-        }
-
     }
 }

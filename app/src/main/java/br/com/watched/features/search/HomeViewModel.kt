@@ -1,14 +1,12 @@
 package br.com.watched.features.search
 
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
 import br.com.watched.base.BaseViewModel
 import br.com.watched.model.interactor.OmdbUseCase
-import br.com.watched.model.pojo.SearchResponse
+import br.com.watched.model.domain.SearchResponseVO
 import br.com.watched.model.api.ApiResponse
 import br.com.watched.util.SchedulersFacade
 import io.reactivex.Single
-import io.reactivex.disposables.CompositeDisposable
 
 /**
  * Created by thiagozg on 11/11/2017.
@@ -17,22 +15,22 @@ import io.reactivex.disposables.CompositeDisposable
 // extends from AndroidViewModel if you need the application context.
 class HomeViewModel(private val useCase: OmdbUseCase) : BaseViewModel() {
 
-    private val viewResponse = MutableLiveData<ApiResponse<SearchResponse>>()
+    private val viewResponse = MutableLiveData<ApiResponse<SearchResponseVO>>()
 
     fun searchByQuery(query: String) {
         loadResultList(useCase.requestSearchByQuery(query))
     }
 
-    fun getResponse(): MutableLiveData<ApiResponse<SearchResponse>> {
+    fun getResponse(): MutableLiveData<ApiResponse<SearchResponseVO>> {
         return viewResponse
     }
 
-    private fun loadResultList(single: Single<SearchResponse>) {
+    private fun loadResultList(single: Single<SearchResponseVO>) {
         disposables.add(single
                 .subscribeOn(SchedulersFacade.io())
                 .observeOn(SchedulersFacade.ui())
-                .doOnSubscribe { viewResponse.value = ApiResponse.loading(true) } // while is requesting
-                .doAfterTerminate { viewResponse.value = ApiResponse.loading(false) } // after response is ready
+                .doOnSubscribe { loadingStatus.setValue(true) } // while is requesting
+                .doAfterTerminate { loadingStatus.setValue(false) } // after response is ready
                 .subscribe( { searchResponse -> viewResponse.value = ApiResponse.success(searchResponse) },
                             { throwable -> viewResponse.value = ApiResponse.error(throwable) })
         )

@@ -1,6 +1,6 @@
 package br.com.watched.util
 
-import br.com.watched.model.pojo.SearchResponse
+import br.com.watched.model.domain.SearchResponseVO
 
 /**
  * Created by thiagozg on 12/11/2017.
@@ -8,7 +8,7 @@ import br.com.watched.model.pojo.SearchResponse
 interface UIListeners {
 
     interface OnClickListener {
-        fun onClick(resultVO: SearchResponse.ResultVO)
+        fun onClick(resultVO: SearchResponseVO.ResultVO)
     }
 
 }

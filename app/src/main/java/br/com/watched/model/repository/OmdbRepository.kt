@@ -1,7 +1,7 @@
 package br.com.watched.model.repository
 
 import br.com.watched.model.api.OmdbApi
-import br.com.watched.model.pojo.SearchResponse
+import br.com.watched.model.domain.SearchResponseVO
 import com.google.gson.JsonObject
 import io.reactivex.Single
 import javax.inject.Inject
@@ -15,7 +15,7 @@ class OmdbRepository
     @Inject
     lateinit var omdbApi: OmdbApi
 
-    fun searchByQuery(query: String): Single<SearchResponse> {
+    fun searchByQuery(query: String): Single<SearchResponseVO> {
         return omdbApi.searchByQuery(query)
     }
 

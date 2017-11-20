@@ -13,14 +13,13 @@ import android.widget.Toast
 import br.com.watched.R
 import br.com.watched.base.BaseActivity
 import br.com.watched.features.details.DetailsActivity
-import br.com.watched.model.pojo.SearchResponse
+import br.com.watched.model.domain.SearchResponseVO
 import br.com.watched.model.api.ApiResponse
 import br.com.watched.model.api.Status.*
 import br.com.watched.util.Constants.KEY_IMDB_ID
 import br.com.watched.util.UIListeners
 import br.com.watched.util.closeKeyboard
 import kotlinx.android.synthetic.main.activity_consult.*
-import org.parceler.Parcels
 
 class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners.OnClickListener {
 
@@ -33,11 +32,12 @@ class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners
                         .of(this, viewModelFactory)
                         .get(HomeViewModel::class.java)
 
+        observeLoadingStatus(viewModel, rv_result_search_list, loading_indicator)
         observeSearchResponse()
     }
 
     private fun observeSearchResponse() {
-        viewModel?.getResponse()?.observe(this, Observer<ApiResponse<SearchResponse>> {
+        viewModel?.getResponse()?.observe(this, Observer<ApiResponse<SearchResponseVO>> {
             response -> response?.let { processResponse(it) }
         })
     }
@@ -45,27 +45,22 @@ class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners
     override fun processResponse(response: ApiResponse<*>) {
         when (response.status) {
             SUCCESS -> {
-                if (response.data is SearchResponse) {
+                if (response.data is SearchResponseVO) {
                     val adapter = HomeAdapter(response.data, this, this)
                     rv_result_search_list.layoutManager = LinearLayoutManager(this)
                     rv_result_search_list.setHasFixedSize(true)
                     rv_result_search_list.adapter = adapter
-                } else Log.e(localClassName, "Unknown success json response.")
+                } else super.processResponse(response)
             }
 
             ERROR -> {
                 Log.e(localClassName, response.error?.message, response.error)
                 Toast.makeText(this, R.string.search_error, Toast.LENGTH_SHORT).show()
             }
-
-            LOADING -> {
-                Log.d(localClassName, "The request is loading...")
-                processLoadingStatus(rv_result_search_list, loading_indicator, response.isLoading)
-            }
         }
     }
 
-    override fun onClick(resultVO: SearchResponse.ResultVO) {
+    override fun onClick(resultVO: SearchResponseVO.ResultVO) {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra(KEY_IMDB_ID, resultVO.imdbID)
         startActivity(intent)

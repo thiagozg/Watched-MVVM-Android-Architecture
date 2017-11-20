@@ -1,5 +1,6 @@
 package br.com.watched.base
 
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 
@@ -9,6 +10,8 @@ import io.reactivex.disposables.CompositeDisposable
 abstract class BaseViewModel : ViewModel() {
 
     protected val disposables = CompositeDisposable()
+
+    val loadingStatus = MutableLiveData<Boolean>()
 
     override fun onCleared() {
         super.onCleared()

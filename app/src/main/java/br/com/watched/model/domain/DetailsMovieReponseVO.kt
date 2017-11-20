@@ -1,12 +1,11 @@
-package br.com.watched.model.pojo
+package br.com.watched.model.domain
 
 import com.google.gson.annotations.SerializedName
-import org.parceler.Parcel
 
 /**
  * Created by thiagozg on 18/11/2017.
  */
-data class DetailsMovieReponse(
+data class DetailsMovieReponseVO(
         @SerializedName("DVD")
         val dvd: String? = "",
         @SerializedName("BoxOffice")
@@ -15,4 +14,4 @@ data class DetailsMovieReponse(
         val production: String? = "",
         @SerializedName("Website")
         val website: String? = ""
-) : AbstractDetailsResponse()
+) : DetailsResponseVO()

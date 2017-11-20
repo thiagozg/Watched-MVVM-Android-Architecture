@@ -1,4 +1,4 @@
-package br.com.watched.model.pojo
+package br.com.watched.model.domain
 
 import com.google.gson.annotations.SerializedName
 import java.util.ArrayList
@@ -7,7 +7,7 @@ import java.util.ArrayList
  * Created by thiagozg on 11/11/2017.
  */
 
-data class SearchResponse (
+data class SearchResponseVO(
             @SerializedName("totalResults")
             val totalResults: String = "0",
             @SerializedName("Response")

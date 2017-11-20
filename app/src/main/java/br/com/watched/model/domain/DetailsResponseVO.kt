@@ -1,12 +1,11 @@
-package br.com.watched.model.pojo
+package br.com.watched.model.domain
 
 import com.google.gson.annotations.SerializedName
-import org.parceler.Parcel
 
 /**
  * Created by thiagozg on 20/11/2017.
  */
-abstract class AbstractDetailsResponse (
+open class DetailsResponseVO(
         @SerializedName("Title")
         val title: String? = "",
         @SerializedName("Year")

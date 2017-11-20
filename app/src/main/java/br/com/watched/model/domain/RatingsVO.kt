@@ -1,7 +1,6 @@
-package br.com.watched.model.pojo
+package br.com.watched.model.domain
 
 import com.google.gson.annotations.SerializedName
-import org.parceler.Parcel
 
 /**
  * Created by thiagozg on 18/11/2017.

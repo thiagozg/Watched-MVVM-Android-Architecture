@@ -2,13 +2,11 @@ package br.com.watched.util
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log.w
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
-import br.com.watched.model.pojo.DetailsMovieReponse
-import br.com.watched.model.pojo.DetailsSeriesResponse
-import br.com.watched.model.pojo.DetailsVO
+import br.com.watched.model.domain.DetailsResponseVO
+import br.com.watched.model.domain.DetailsMovieReponseVO
+import br.com.watched.model.domain.DetailsSeriesResponseVO
 import br.com.watched.util.Constants.TYPE_MOVIE
 import br.com.watched.util.Constants.TYPE_SERIES
 import com.bumptech.glide.Glide
@@ -34,16 +32,14 @@ fun ImageView.loadGlide(url: String? = null, isCircleCrop: Boolean = true) {
     imageLoaded.into(this)
 }
 
-fun JsonObject.deserializeDetails(gson: Gson): DetailsVO {
+fun JsonObject.deserializeDetails(gson: Gson): DetailsResponseVO {
     val type = this.get("Type").asString
 
     return when {
-        type.equals(TYPE_MOVIE) -> DetailsVO(
-                gson.fromJson(this, DetailsMovieReponse::class.java), null)
+        type.equals(TYPE_MOVIE) -> gson.fromJson(this, DetailsMovieReponseVO::class.java)
 
-        type.equals(TYPE_SERIES) -> DetailsVO(null,
-                gson.fromJson(this, DetailsSeriesResponse::class.java))
+        type.equals(TYPE_SERIES) -> gson.fromJson(this, DetailsSeriesResponseVO::class.java)
 
-        else -> DetailsVO()
+        else -> DetailsResponseVO()
     }
 }
