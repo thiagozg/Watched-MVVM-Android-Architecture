@@ -16,13 +16,13 @@
             android:layout_height="match_parent">
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/cl_details"
+                android:id="@+id/clDetails"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
 
                 <ImageView
-                    android:id="@+id/iv_poster"
+                    android:id="@+id/ivPoster"
                     android:layout_width="131dp"
                     android:layout_height="135dp"
                     android:layout_marginEnd="8dp"
@@ -35,7 +35,7 @@
                     android:contentDescription="@string/poster_content_description" />
 
                 <TextView
-                    android:id="@+id/tv_title"
+                    android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -45,10 +45,10 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_poster" />
+                    app:layout_constraintTop_toBottomOf="@+id/ivPoster" />
 
                 <TextView
-                    android:id="@+id/tv_description"
+                    android:id="@+id/tvDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -56,7 +56,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
                 <View
                     android:id="@+id/view"
@@ -69,7 +69,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
                 <TextView
                     android:id="@+id/textView"
@@ -83,7 +83,7 @@
                     android:layout_marginLeft="82dp" />
 
                 <TextView
-                    android:id="@+id/tv_genre"
+                    android:id="@+id/tvGenre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
@@ -108,7 +108,7 @@
                     android:layout_marginStart="52dp" />
 
                 <TextView
-                    android:id="@+id/tv_actors"
+                    android:id="@+id/tvActors"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="32dp"
@@ -118,7 +118,7 @@
                     android:maxLength="25"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView3"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_genre"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGenre"
                     android:layout_marginStart="32dp" />
 
                 <TextView
@@ -133,7 +133,7 @@
                     android:layout_marginLeft="88dp" />
 
                 <TextView
-                    android:id="@+id/tv_language"
+                    android:id="@+id/tvLanguage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -144,7 +144,7 @@
                     android:maxLines="1"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView5"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_actors" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvActors" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -158,7 +158,7 @@
                     android:layout_marginLeft="58dp" />
 
                 <TextView
-                    android:id="@+id/tv_awards"
+                    android:id="@+id/tvAwards"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -169,12 +169,12 @@
                     android:maxLines="1"
                     android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/textView6"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_language" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvLanguage" />
 
             </android.support.constraint.ConstraintLayout>
 
             <ProgressBar
-                android:id="@+id/loading_indicator"
+                android:id="@+id/loadingIndicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"

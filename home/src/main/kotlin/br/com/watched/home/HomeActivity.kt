@@ -11,7 +11,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import br.com.watched.core.R
 import br.com.watched.core.base.BaseActivity
-import br.com.watched.core.features.details.DetailsActivity
 import br.com.watched.core.model.api.ApiResponse
 import br.com.watched.core.model.api.Status.*
 import br.com.watched.core.model.domain.SearchResponseVO

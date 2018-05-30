@@ -7,7 +7,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Provides various threading schedulers.
  */
-object SchedulersFacade {
+object RxSchedulers {
 
     /**
      * IO thread pool scheduler

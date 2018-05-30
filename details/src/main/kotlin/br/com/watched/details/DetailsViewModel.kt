@@ -1,11 +1,11 @@
-package br.com.watched.core.features.details
+package br.com.watched.details
 
 import android.arch.lifecycle.MutableLiveData
 import br.com.watched.core.base.BaseViewModel
 import br.com.watched.core.model.api.ApiResponse
 import br.com.watched.core.model.domain.DetailsResponseVO
 import br.com.watched.core.model.interactor.OmdbUseCase
-import br.com.watched.core.util.SchedulersFacade
+import br.com.watched.core.util.RxSchedulers
 import io.reactivex.Single
 
 /**
@@ -25,8 +25,8 @@ class DetailsViewModel(private val useCase: OmdbUseCase) : BaseViewModel() {
 
     private fun loadResultDetails(single: Single<DetailsResponseVO>) {
         disposables.add(single
-                .subscribeOn(SchedulersFacade.io())
-                .observeOn(SchedulersFacade.ui())
+                .subscribeOn(RxSchedulers.io())
+                .observeOn(RxSchedulers.ui())
                 .doOnSubscribe { loadingStatus.setValue(true) } // while is requesting
                 .doAfterTerminate { loadingStatus.setValue(false) } // after response is ready
                 .subscribe( { detailsResponse -> viewResponse.value = ApiResponse.success(detailsResponse) },

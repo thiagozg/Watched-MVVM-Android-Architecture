@@ -1,3 +1,4 @@
 include ':app',
         ':core',
-        ':home'
+        ':home',
+        ':details'

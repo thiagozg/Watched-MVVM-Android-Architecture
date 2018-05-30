@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/cl_infos"
+        android:id="@+id/clInfos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="18dp"
@@ -13,7 +13,7 @@
         android:paddingLeft="30dp">
 
         <ImageView
-            android:id="@+id/iv_channel_mini"
+            android:id="@+id/ivChannelMini"
             android:layout_width="71dp"
             android:layout_height="68dp"
             android:layout_marginLeft="4dp"
@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -32,11 +32,11 @@
             android:maxLines="1"
             android:paddingRight="65dp"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/iv_channel_mini"
+            app:layout_constraintStart_toEndOf="@+id/ivChannelMini"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -46,8 +46,8 @@
             android:paddingRight="100dp"
             android:maxLines="2"
             android:ellipsize="end"
-            app:layout_constraintStart_toEndOf="@+id/iv_channel_mini"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+            app:layout_constraintStart_toEndOf="@+id/ivChannelMini"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -56,7 +56,7 @@
         android:layout_height="2dp"
         android:layout_marginBottom="8dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintStart_toEndOf="@id/cl_infos"
+        app:layout_constraintStart_toEndOf="@id/clInfos"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"

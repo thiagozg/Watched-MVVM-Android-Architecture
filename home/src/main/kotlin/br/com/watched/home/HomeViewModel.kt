@@ -5,7 +5,7 @@ import br.com.watched.core.base.BaseViewModel
 import br.com.watched.core.model.interactor.OmdbUseCase
 import br.com.watched.core.model.domain.SearchResponseVO
 import br.com.watched.core.model.api.ApiResponse
-import br.com.watched.core.util.SchedulersFacade
+import br.com.watched.core.util.RxSchedulers
 import io.reactivex.Single
 
 /**
@@ -27,8 +27,8 @@ class HomeViewModel(useCase: OmdbUseCase) : BaseViewModel(useCase) {
 
     private fun loadResultList(single: Single<SearchResponseVO>) {
         disposables.add(single
-                .subscribeOn(SchedulersFacade.io())
-                .observeOn(SchedulersFacade.ui())
+                .subscribeOn(RxSchedulers.io())
+                .observeOn(RxSchedulers.ui())
                 .doOnSubscribe { loadingStatus.setValue(true) } // while is requesting
                 .doAfterTerminate { loadingStatus.setValue(false) } // after response is ready
                 .subscribe( { viewResponse.value = ApiResponse.success(it) },

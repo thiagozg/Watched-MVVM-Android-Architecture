@@ -1,7 +1,7 @@
 package br.com.watched.di.modules
 
-import br.com.watched.core.features.details.DetailsActivity
-import br.com.watched.core.features.details.DetailsModule
+import br.com.watched.details.DetailsActivity
+import br.com.watched.details.DetailsModule
 import br.com.watched.home.HomeActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

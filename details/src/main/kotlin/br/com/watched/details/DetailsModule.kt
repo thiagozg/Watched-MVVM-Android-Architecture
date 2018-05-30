@@ -1,4 +1,4 @@
-package br.com.watched.core.features.details
+package br.com.watched.details
 
 import dagger.Module
 

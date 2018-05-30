@@ -1,6 +1,4 @@
 <resources>
-    <string name="type">Type</string>
-    <string name="year">Year</string>
     <string name="label_genre">Genre:</string>
     <string name="label_actors">Actors:</string>
     <string name="label_language">Language</string>

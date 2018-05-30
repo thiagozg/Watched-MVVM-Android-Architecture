@@ -20,4 +20,5 @@ dependencies {
     glide()
     parceler()
     feature project(":home")
+    feature project(":details")
 }

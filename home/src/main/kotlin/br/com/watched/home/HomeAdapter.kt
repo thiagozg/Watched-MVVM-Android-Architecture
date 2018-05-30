@@ -46,9 +46,9 @@ class HomeAdapter(
         class ResultHolder(view: View, val context: Context) : RecyclerView.ViewHolder(view) {
 
             fun bindData(vo: SearchResponseVO.ResultVO) {
-                itemView.iv_channel_mini.loadGlide(vo.poster)
-                itemView.tv_title.text = vo.title
-                itemView.tv_description.text =
+                itemView.ivChannelMini.loadGlide(vo.poster)
+                itemView.tvTitle.text = vo.title
+                itemView.tvDescription.text =
                         "${context.getString(R.string.type)}: ${vo.type} - " +
                         "${context.getString(R.string.year)}: ${vo.year}"
             }

@@ -1,0 +1,8 @@
+apply plugin: 'com.android.feature'
+apply from: '../gradle/config/android-common-config.gradle'
+
+dependencies {
+    implementation project(':core')
+
+    kapt annotationProcessor()
+}
