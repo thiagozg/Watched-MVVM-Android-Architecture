@@ -1,8 +1,8 @@
-package br.com.watched.core.di.modules
+package br.com.watched.di.modules
 
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
-import br.com.watched.core.WatchedApplication
+import br.com.watched.WatchedApplication
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

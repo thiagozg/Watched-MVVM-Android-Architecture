@@ -1,6 +1,7 @@
 package br.com.watched.core.model.api
 
-import br.com.watched.core.model.api.Status.*
+import br.com.watched.core.model.api.Status.ERROR
+import br.com.watched.core.model.api.Status.SUCCESS
 
 /**
  * ApiResponse holder provided to the UI

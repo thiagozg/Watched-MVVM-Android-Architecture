@@ -4,8 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
-import br.com.watched.core.model.domain.DetailsResponseVO
 import br.com.watched.core.model.domain.DetailsMovieReponseVO
+import br.com.watched.core.model.domain.DetailsResponseVO
 import br.com.watched.core.model.domain.DetailsSeriesResponseVO
 import br.com.watched.core.util.Constants.TYPE_MOVIE
 import br.com.watched.core.util.Constants.TYPE_SERIES

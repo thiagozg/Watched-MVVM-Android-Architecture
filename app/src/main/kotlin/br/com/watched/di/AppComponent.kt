@@ -1,7 +1,7 @@
-package br.com.watched.core.di
+package br.com.watched.di
 
-import br.com.watched.core.WatchedApplication
-import br.com.watched.core.di.modules.*
+import br.com.watched.WatchedApplication
+import br.com.watched.di.modules.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule

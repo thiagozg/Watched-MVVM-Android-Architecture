@@ -1,7 +1,7 @@
 package br.com.watched.core.model.domain
 
 import com.google.gson.annotations.SerializedName
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created by thiagozg on 11/11/2017.

@@ -3,8 +3,8 @@ package br.com.watched.core.features.details
 import android.arch.lifecycle.MutableLiveData
 import br.com.watched.core.base.BaseViewModel
 import br.com.watched.core.model.api.ApiResponse
-import br.com.watched.core.model.interactor.OmdbUseCase
 import br.com.watched.core.model.domain.DetailsResponseVO
+import br.com.watched.core.model.interactor.OmdbUseCase
 import br.com.watched.core.util.SchedulersFacade
 import io.reactivex.Single
 

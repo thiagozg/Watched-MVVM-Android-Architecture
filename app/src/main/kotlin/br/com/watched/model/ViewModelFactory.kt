@@ -1,15 +1,16 @@
-package br.com.watched.core.model.viewmodel
+package br.com.watched.model
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import br.com.watched.core.features.details.DetailsViewModel
-import br.com.watched.core.features.search.HomeViewModel
 import br.com.watched.core.model.interactor.OmdbUseCase
+import br.com.watched.home.HomeViewModel
 import javax.inject.Inject
 
 /**
  * Created by thiagozg on 11/11/2017.
  */
+// TODO: remove that later
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory
 @Inject constructor(private val useCase: OmdbUseCase) : ViewModelProvider.Factory {
@@ -22,7 +23,7 @@ class ViewModelFactory
             modelClass.isAssignableFrom(DetailsViewModel::class.java) ->
                 DetailsViewModel(useCase) as T
 
-            else -> throw IllegalArgumentException("Unknown ViewModel class")
+            else -> throw IllegalArgumentException("Unknown ViewModel Class")
         }
     }
 

@@ -1,8 +1,7 @@
-package br.com.watched.core
+package br.com.watched
 
 import android.app.Activity
 import android.app.Application
-import br.com.watched.core.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector

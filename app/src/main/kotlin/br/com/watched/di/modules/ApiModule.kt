@@ -1,4 +1,4 @@
-package br.com.watched.core.di.modules
+package br.com.watched.di.modules
 
 import br.com.watched.core.model.api.OmdbApi
 import dagger.Module

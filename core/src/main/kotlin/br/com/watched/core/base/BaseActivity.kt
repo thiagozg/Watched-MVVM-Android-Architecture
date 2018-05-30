@@ -1,6 +1,7 @@
 package br.com.watched.core.base
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModel
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -8,7 +9,6 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import br.com.watched.core.model.api.ApiResponse
-import br.com.watched.core.model.viewmodel.ViewModelFactory
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -18,9 +18,7 @@ import javax.inject.Inject
 abstract class BaseActivity : AppCompatActivity() {
 
     @Inject
-    protected lateinit var viewModelFactory: ViewModelFactory
-
-
+    protected lateinit var viewModel: ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

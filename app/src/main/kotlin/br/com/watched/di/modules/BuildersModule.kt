@@ -1,9 +1,8 @@
-package br.com.watched.core.di.modules
+package br.com.watched.di.modules
 
 import br.com.watched.core.features.details.DetailsActivity
 import br.com.watched.core.features.details.DetailsModule
-import br.com.watched.core.features.search.HomeActivity
-import br.com.watched.core.features.search.HomeModule
+import br.com.watched.home.HomeActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,7 +12,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class BuildersModule {
 
-    @ContributesAndroidInjector(modules = arrayOf(HomeModule::class))
+    @ContributesAndroidInjector() // FIXME: test if its really necessery to use a EmptyModule here
     internal abstract fun bindHomeActivity(): HomeActivity
 
     @ContributesAndroidInjector(modules = arrayOf(DetailsModule::class))

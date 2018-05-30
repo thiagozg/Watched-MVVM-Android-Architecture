@@ -8,8 +8,6 @@ import br.com.watched.core.base.BaseActivity
 import br.com.watched.core.model.api.ApiResponse
 import br.com.watched.core.model.domain.DetailsResponseVO
 import br.com.watched.core.util.Constants.KEY_IMDB_ID
-import br.com.watched.core.util.loadGlide
-import kotlinx.android.synthetic.main.activity_details.*
 
 /**
  * Created by thiagozg on 18/11/2017.

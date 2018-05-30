@@ -1,8 +1,8 @@
-package br.com.watched.core.di.modules
+package br.com.watched.di.modules
 
 import android.content.Context
 import android.content.SharedPreferences
-import br.com.watched.core.WatchedApplication
+import br.com.watched.WatchedApplication
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

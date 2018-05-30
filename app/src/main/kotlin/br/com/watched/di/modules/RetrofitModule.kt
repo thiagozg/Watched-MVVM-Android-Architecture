@@ -1,4 +1,4 @@
-package br.com.watched.core.di.modules
+package br.com.watched.di.modules
 
 import br.com.watched.core.BuildConfig
 import com.google.gson.Gson
