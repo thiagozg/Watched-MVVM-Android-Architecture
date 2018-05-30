@@ -12,10 +12,10 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class BuildersModule {
 
-    @ContributesAndroidInjector() // FIXME: test if its really necessery to use a EmptyModule here
+    @ContributesAndroidInjector // TODO: test empty module
     internal abstract fun bindHomeActivity(): HomeActivity
 
-    @ContributesAndroidInjector(modules = arrayOf(DetailsModule::class))
+    @ContributesAndroidInjector(modules = [DetailsModule::class])
     internal abstract fun bindDetailsActivity(): DetailsActivity
 
     // Add bindings for other sub-components here

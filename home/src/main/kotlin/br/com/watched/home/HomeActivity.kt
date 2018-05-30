@@ -1,7 +1,6 @@
 package br.com.watched.home
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -20,24 +19,23 @@ import br.com.watched.core.util.Constants.KEY_IMDB_ID
 import br.com.watched.core.util.UIListeners
 import br.com.watched.core.util.closeKeyboard
 import kotlinx.android.synthetic.main.activity_home.*
+import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners.OnClickListener {
 
-    private var viewModel: HomeViewModel? = null
+    @Inject
+    lateinit var viewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_consult)
-        viewModel = ViewModelProviders
-                        .of(this, viewModelFactory)
-                        .get(HomeViewModel::class.java)
+        setContentView(R.layout.activity_home)
 
-        observeLoadingStatus(viewModel, rv_result_search_list, loading_indicator)
+        observeLoadingStatus(viewModel, rvResultSearch, loadingIndicator)
         observeSearchResponse()
     }
 
     private fun observeSearchResponse() {
-        viewModel?.getResponse()?.observe(this, Observer<ApiResponse<SearchResponseVO>> {
+        viewModel.getResponse().observe(this, Observer<ApiResponse<SearchResponseVO>> {
             response -> response?.let { processResponse(it) }
         })
     }
@@ -47,9 +45,9 @@ class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners
             SUCCESS -> {
                 if (response.data is SearchResponseVO) {
                     val adapter = HomeAdapter(response.data as SearchResponseVO, this, this)
-                    rv_result_search_list.layoutManager = LinearLayoutManager(this)
-                    rv_result_search_list.setHasFixedSize(true)
-                    rv_result_search_list.adapter = adapter
+                    rvResultSearch.layoutManager = LinearLayoutManager(this)
+                    rvResultSearch.setHasFixedSize(true)
+                    rvResultSearch.adapter = adapter
                 } else super.processResponse(response)
             }
 

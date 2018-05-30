@@ -13,7 +13,7 @@ import io.reactivex.Single
  */
 
 // extends from AndroidViewModel if you need the application context.
-class HomeViewModel(private val useCase: OmdbUseCase) : BaseViewModel() {
+class HomeViewModel(useCase: OmdbUseCase) : BaseViewModel(useCase) {
 
     private val viewResponse = MutableLiveData<ApiResponse<SearchResponseVO>>()
 
