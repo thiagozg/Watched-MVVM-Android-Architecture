@@ -1,0 +1,20 @@
+apply plugin: 'com.android.feature'
+apply from: '../gradle/config/android-common-config.gradle'
+
+android {
+    baseFeature true
+}
+
+dependencies {
+    application project(':app')
+
+    libs()
+    kotlin()
+    android()
+    dagger()
+    architecture()
+    networking()
+    rx()
+    glide()
+    parceler()
+}

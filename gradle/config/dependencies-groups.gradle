@@ -10,7 +10,7 @@ ext {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     libs = Group {
-        implementation depends.libs
+        api depends.libs
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,8 +18,8 @@ ext {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     kotlin = Group {
-        implementation depends.kotlin.lib
-        implementation depends.kotlin.ktx
+        api depends.kotlin.lib
+        api depends.kotlin.ktx
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -27,12 +27,12 @@ ext {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     android = Group {
-        implementation depends.android.compat
-        implementation depends.android.v4
-        implementation depends.android.v7
-        implementation depends.android.recyclerView
-        implementation depends.android.design
-        implementation depends.android.constraintLayout
+        api depends.android.compat
+        api depends.android.v4
+        api depends.android.v7
+        api depends.android.recyclerView
+        api depends.android.design
+        api depends.android.constraintLayout
     }
     
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,10 +40,10 @@ ext {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     dagger = Group {
-        implementation depends.dagger.dagger
+        api depends.dagger.dagger
         kapt depends.dagger.compiler
-        implementation depends.dagger.android
-        implementation depends.dagger.support
+        api depends.dagger.android
+        api depends.dagger.support
         kapt depends.dagger.processor
     }
 
@@ -52,10 +52,10 @@ ext {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     architecture = Group {
-        implementation depends.architecture.viewModel
-        implementation depends.architecture.liveData
-        implementation depends.architecture.extensions
-        implementation depends.architecture.streams
+        api depends.architecture.viewModel
+        api depends.architecture.liveData
+        api depends.architecture.extensions
+        api depends.architecture.streams
         kapt depends.architecture.compiler
     }
 
@@ -64,14 +64,14 @@ ext {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     networking = Group {
-        implementation depends.okHttp.okHttp
-        implementation depends.okHttp.logging
+        api depends.okHttp.okHttp
+        api depends.okHttp.logging
 
-        implementation depends.retrofit.retrofit
-        implementation depends.retrofit.rx
-        implementation depends.retrofit.gson
-        implementation depends.retrofit.scalars
-        implementation depends.retrofit.adapter
+        api depends.retrofit.retrofit
+        api depends.retrofit.rx
+        api depends.retrofit.gson
+        api depends.retrofit.scalars
+        api depends.retrofit.adapter
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,16 +79,16 @@ ext {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     rx = Group {
-        implementation depends.rx.android
-        implementation depends.rx.java
+        api depends.rx.android
+        api depends.rx.java
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // IMAGE                                                                                      //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    image = Group {
-        implementation depends.glide.api
+    glide = Group {
+        api depends.glide.api
         kapt depends.glide.compiler
     }
 
@@ -97,7 +97,7 @@ ext {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     parceler = Group {
-        implementation depends.parceler.api
+        api depends.parceler.api
         kapt depends.parceler.compiler
     }
 

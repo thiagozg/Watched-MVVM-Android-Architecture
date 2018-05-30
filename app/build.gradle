@@ -2,6 +2,12 @@ apply plugin: 'com.android.application'
 apply from: '../gradle/config/android-common-config.gradle'
 
 android {
+    defaultConfig {
+        applicationId "br.com.watched"
+        versionCode versions.android.versionCode
+        versionName versions.android.versionName
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -15,13 +21,9 @@ android {
 }
 
 dependencies {
-    libs()
-    kotlin()
-    android()
-    dagger()
-    architecture()
-    networking()
-    rx()
-    image()
-    parceler()
+    implementation project(path: ':core')
+
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
