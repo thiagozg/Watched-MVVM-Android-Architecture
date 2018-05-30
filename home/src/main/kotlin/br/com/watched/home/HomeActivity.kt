@@ -11,19 +11,21 @@ import android.view.MenuItem
 import android.widget.Toast
 import br.com.watched.core.R
 import br.com.watched.core.base.BaseActivity
+import br.com.watched.core.base.ScreenRouter
 import br.com.watched.core.model.api.ApiResponse
 import br.com.watched.core.model.api.Status.*
 import br.com.watched.core.model.domain.SearchResponseVO
 import br.com.watched.core.util.Constants.KEY_IMDB_ID
 import br.com.watched.core.util.UIListeners
 import br.com.watched.core.util.closeKeyboard
+import br.com.watched.home.R.id.loadingIndicator
+import br.com.watched.home.R.id.rvResultSearch
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners.OnClickListener {
 
-    @Inject
-    lateinit var viewModel: HomeViewModel
+    @Inject lateinit var viewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,9 +60,11 @@ class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners
     }
 
     override fun onClick(resultVO: SearchResponseVO.ResultVO) {
-        val intent = Intent(this, DetailsActivity::class.java)
-        intent.putExtra(KEY_IMDB_ID, resultVO.imdbID)
-        startActivity(intent)
+        val intent: Intent? = screenRouter.getIntent(this, ScreenRouter.ScreenBO.DetailView)
+        intent?.let {
+            intent.apply { putExtra(KEY_IMDB_ID, resultVO.imdbID) }
+                  .run { startActivity(this) }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

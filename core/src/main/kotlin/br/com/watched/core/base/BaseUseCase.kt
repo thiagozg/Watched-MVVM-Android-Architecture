@@ -8,7 +8,6 @@ import javax.inject.Inject
  */
 abstract class BaseUseCase {
 
-    @Inject
-    protected lateinit var gson: Gson
+    @Inject protected lateinit var gson: Gson
 
 }

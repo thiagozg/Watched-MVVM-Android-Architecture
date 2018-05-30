@@ -11,7 +11,7 @@ import io.reactivex.Single
 /**
  * Created by thiagozg on 18/11/2017.
  */
-class DetailsViewModel(private val useCase: OmdbUseCase) : BaseViewModel() {
+class DetailsViewModel(useCase: OmdbUseCase) : BaseViewModel(useCase) {
 
     private val viewResponse = MutableLiveData<ApiResponse<DetailsResponseVO>>()
 

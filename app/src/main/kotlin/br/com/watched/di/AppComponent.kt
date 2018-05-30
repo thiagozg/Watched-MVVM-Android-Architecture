@@ -14,6 +14,7 @@ import javax.inject.Singleton
     NetModule::class,
     RetrofitModule::class,
     ApiModule::class,
+    ScreenRouterModule::class,
     BuildersModule::class]
 )
 interface AppComponent {

@@ -20,23 +20,18 @@ class NetModule {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(app: WatchedApplication): SharedPreferences {
-        return PreferenceManager.getDefaultSharedPreferences(app)
-    }
+    fun provideSharedPreferences(app: WatchedApplication) = PreferenceManager.getDefaultSharedPreferences(app)
 
     @Provides
     @Singleton
     fun provideHttpCache(app: WatchedApplication): Cache {
         val cacheSize = 10 * 1024 * 1024
-
         return Cache(app.cacheDir, cacheSize.toLong())
     }
 
     @Provides
     @Singleton
-    fun provideGson(): Gson {
-        return GsonBuilder().create()
-    }
+    fun provideGson() = GsonBuilder().create()
 
     @Provides
     @Singleton

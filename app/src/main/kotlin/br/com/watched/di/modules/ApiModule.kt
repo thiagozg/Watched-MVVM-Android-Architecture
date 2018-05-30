@@ -11,8 +11,6 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun providesOmdbApi(retrofit: Retrofit): OmdbApi {
-        return retrofit.create(OmdbApi::class.java)
-    }
+    fun providesOmdbApi(retrofit: Retrofit) = retrofit.create(OmdbApi::class.java)
 
 }

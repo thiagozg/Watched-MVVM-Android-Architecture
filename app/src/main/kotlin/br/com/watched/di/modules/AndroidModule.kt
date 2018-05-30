@@ -17,14 +17,10 @@ class AndroidModule {
 
     @Provides
     @Singleton
-    fun provideContext(application: WatchedApplication): Context {
-        return application.getApplicationContext()
-    }
+    fun provideContext(application: WatchedApplication) = application.getApplicationContext()
 
     @Provides
     @Singleton
-    fun providesSharedPreferences(context: Context): SharedPreferences {
-        return context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
-    }
+    fun providesSharedPreferences(context: Context) = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
 
 }

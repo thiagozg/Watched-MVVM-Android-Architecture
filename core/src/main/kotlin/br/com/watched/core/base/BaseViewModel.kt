@@ -9,7 +9,7 @@ import javax.inject.Inject
 /**
  * Created by thiagozg on 18/11/2017.
  */
-abstract class BaseViewModel
+open class BaseViewModel
 @Inject constructor(protected val useCase: OmdbUseCase) : ViewModel() {
 
     protected val disposables = CompositeDisposable()

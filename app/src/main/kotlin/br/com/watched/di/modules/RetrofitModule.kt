@@ -16,18 +16,16 @@ class RetrofitModule {
 
     @Provides
     @Singleton
-    fun providesRetrofit(client: OkHttpClient, gson: Gson): Retrofit {
-        return builder(gson)
-                .baseUrl(BuildConfig.ENDPOINT)
-                .client(client)
-                .build()
-    }
+    fun providesRetrofit(client: OkHttpClient, gson: Gson) =
+            builder(gson)
+                    .baseUrl(BuildConfig.ENDPOINT)
+                    .client(client)
+                    .build()
 
-    private fun builder(gson: Gson): Retrofit.Builder {
-        return Retrofit.Builder()
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-    }
+    private fun builder(gson: Gson) =
+            Retrofit.Builder()
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
 
 }

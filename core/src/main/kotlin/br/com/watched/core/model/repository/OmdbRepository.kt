@@ -12,8 +12,7 @@ import javax.inject.Inject
 class OmdbRepository
 @Inject constructor() {
 
-    @Inject
-    lateinit var omdbApi: OmdbApi
+    @Inject lateinit var omdbApi: OmdbApi
 
     fun searchByQuery(query: String): Single<SearchResponseVO> {
         return omdbApi.searchByQuery(query)

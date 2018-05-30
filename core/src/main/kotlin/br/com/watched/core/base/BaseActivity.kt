@@ -17,6 +17,8 @@ import javax.inject.Inject
  */
 abstract class BaseActivity : AppCompatActivity() {
 
+    @Inject lateinit var screenRouter: ScreenRouter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)

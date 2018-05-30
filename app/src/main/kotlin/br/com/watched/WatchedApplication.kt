@@ -9,8 +9,7 @@ import javax.inject.Inject
 
 class WatchedApplication : Application(), HasActivityInjector {
 
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+    @Inject lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()

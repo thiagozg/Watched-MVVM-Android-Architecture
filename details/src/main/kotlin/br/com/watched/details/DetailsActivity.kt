@@ -16,8 +16,7 @@ import javax.inject.Inject
  */
 class DetailsActivity : BaseActivity() {
 
-    @Inject
-    lateinit var viewModel: DetailsViewModel
+    @Inject lateinit var viewModel: DetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
