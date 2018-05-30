@@ -31,8 +31,8 @@ class HomeViewModel(private val useCase: OmdbUseCase) : BaseViewModel() {
                 .observeOn(SchedulersFacade.ui())
                 .doOnSubscribe { loadingStatus.setValue(true) } // while is requesting
                 .doAfterTerminate { loadingStatus.setValue(false) } // after response is ready
-                .subscribe( { searchResponse -> viewResponse.value = ApiResponse.success(searchResponse) },
-                            { throwable -> viewResponse.value = ApiResponse.error(throwable) })
+                .subscribe( { viewResponse.value = ApiResponse.success(it) },
+                            { viewResponse.value = ApiResponse.error(it) })
         )
     }
 

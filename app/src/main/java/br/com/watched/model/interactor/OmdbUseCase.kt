@@ -20,7 +20,7 @@ class OmdbUseCase
 
     fun requestDetailsByImdbID(imdbID: String): Single<DetailsResponseVO> {
         return repository.getDetailsByImdbID(imdbID)
-                          .map { json -> json.deserializeDetails(gson) }
+                          .map { it.deserializeDetails(gson) }
     }
 
 }
