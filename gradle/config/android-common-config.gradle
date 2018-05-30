@@ -1,0 +1,34 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion versions.android.targetSdk
+    buildToolsVersion versions.android.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.android.minSdk
+        targetSdkVersion versions.android.targetSdk
+
+        buildConfigField "String", "ENDPOINT", "\"http://www.omdbapi.com/\""
+        buildConfigField "String", "API_KEY", "\"b306a4ed\""
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+
+    kapt {
+        generateStubs = true
+        mapDiagnosticLocations = true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}

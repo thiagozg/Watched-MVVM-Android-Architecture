@@ -1,0 +1,109 @@
+def Group(Closure closure) {
+    closure.delegate = dependencies
+    return closure
+}
+
+ext {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // LIBRARIES                                                                                  //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    libs = Group {
+        implementation depends.libs
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // KOTLIN                                                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    kotlin = Group {
+        implementation depends.kotlin.lib
+        implementation depends.kotlin.ktx
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // ANDROID                                                                                    //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    android = Group {
+        implementation depends.android.compat
+        implementation depends.android.v4
+        implementation depends.android.v7
+        implementation depends.android.recyclerView
+        implementation depends.android.design
+        implementation depends.android.constraintLayout
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // DAGGER                                                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    dagger = Group {
+        implementation depends.dagger.dagger
+        kapt depends.dagger.compiler
+        implementation depends.dagger.android
+        implementation depends.dagger.support
+        kapt depends.dagger.processor
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // ARCHITECTURE COMPONENTS                                                                    //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    architecture = Group {
+        implementation depends.architecture.viewModel
+        implementation depends.architecture.liveData
+        implementation depends.architecture.extensions
+        implementation depends.architecture.streams
+        kapt depends.architecture.compiler
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // NETWORKING                                                                                 //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    networking = Group {
+        implementation depends.okHttp.okHttp
+        implementation depends.okHttp.logging
+
+        implementation depends.retrofit.retrofit
+        implementation depends.retrofit.rx
+        implementation depends.retrofit.gson
+        implementation depends.retrofit.scalars
+        implementation depends.retrofit.adapter
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // RX                                                                                         //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    rx = Group {
+        implementation depends.rx.android
+        implementation depends.rx.java
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // IMAGE                                                                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    image = Group {
+        implementation depends.glide.api
+        kapt depends.glide.compiler
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // PARCELER                                                                                         //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    parceler = Group {
+        implementation depends.parceler.api
+        kapt depends.parceler.compiler
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // TESTING                                                                                    //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    // TODO
+}
