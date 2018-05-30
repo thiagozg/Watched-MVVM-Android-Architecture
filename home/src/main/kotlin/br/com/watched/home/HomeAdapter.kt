@@ -1,4 +1,4 @@
-package br.com.watched.core.features.search
+package br.com.watched.home
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView

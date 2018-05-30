@@ -1,0 +1,4 @@
+<resources>
+    <string name="search_hint">Search</string>
+    <string name="search_error">Unable to load result of search.</string>
+</resources>

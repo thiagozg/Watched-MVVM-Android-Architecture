@@ -1,4 +1,4 @@
-package br.com.watched.core.features.search
+package br.com.watched.home
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
@@ -19,7 +19,7 @@ import br.com.watched.core.model.domain.SearchResponseVO
 import br.com.watched.core.util.Constants.KEY_IMDB_ID
 import br.com.watched.core.util.UIListeners
 import br.com.watched.core.util.closeKeyboard
-import kotlinx.android.synthetic.main.activity_consult.*
+import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners.OnClickListener {
 
@@ -46,7 +46,7 @@ class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners
         when (response.status) {
             SUCCESS -> {
                 if (response.data is SearchResponseVO) {
-                    val adapter = HomeAdapter(response.data, this, this)
+                    val adapter = HomeAdapter(response.data as SearchResponseVO, this, this)
                     rv_result_search_list.layoutManager = LinearLayoutManager(this)
                     rv_result_search_list.setHasFixedSize(true)
                     rv_result_search_list.adapter = adapter

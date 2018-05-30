@@ -6,7 +6,9 @@ android {
 }
 
 dependencies {
+    api 'com.android.support:appcompat-v7:27.1.1'
     application project(':app')
+    feature project(':home')
 
     libs()
     kotlin()
@@ -17,4 +19,5 @@ dependencies {
     rx()
     glide()
     parceler()
+    feature project(":home")
 }

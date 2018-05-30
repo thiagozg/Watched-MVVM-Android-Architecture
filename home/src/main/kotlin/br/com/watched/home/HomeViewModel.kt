@@ -1,4 +1,4 @@
-package br.com.watched.core.features.search
+package br.com.watched.home
 
 import android.arch.lifecycle.MutableLiveData
 import br.com.watched.core.base.BaseViewModel
