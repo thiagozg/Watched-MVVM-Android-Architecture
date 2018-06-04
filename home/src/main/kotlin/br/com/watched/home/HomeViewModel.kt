@@ -7,13 +7,15 @@ import br.com.watched.core.model.domain.SearchResponseVO
 import br.com.watched.core.model.api.ApiResponse
 import br.com.watched.core.util.RxSchedulers
 import io.reactivex.Single
+import javax.inject.Inject
 
 /**
  * Created by thiagozg on 11/11/2017.
  */
 
 // extends from AndroidViewModel if you need the application context.
-class HomeViewModel(useCase: OmdbUseCase) : BaseViewModel(useCase) {
+class HomeViewModel
+@Inject constructor(useCase: OmdbUseCase) : BaseViewModel(useCase) {
 
     private val viewResponse = MutableLiveData<ApiResponse<SearchResponseVO>>()
 

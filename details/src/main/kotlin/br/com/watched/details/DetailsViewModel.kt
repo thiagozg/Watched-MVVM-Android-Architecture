@@ -7,11 +7,13 @@ import br.com.watched.core.model.domain.DetailsResponseVO
 import br.com.watched.core.model.interactor.OmdbUseCase
 import br.com.watched.core.util.RxSchedulers
 import io.reactivex.Single
+import javax.inject.Inject
 
 /**
  * Created by thiagozg on 18/11/2017.
  */
-class DetailsViewModel(useCase: OmdbUseCase) : BaseViewModel(useCase) {
+class DetailsViewModel
+@Inject constructor(useCase: OmdbUseCase) : BaseViewModel(useCase) {
 
     private val viewResponse = MutableLiveData<ApiResponse<DetailsResponseVO>>()
 

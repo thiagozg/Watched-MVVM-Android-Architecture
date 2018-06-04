@@ -3,6 +3,7 @@ package br.com.watched.core.base
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
 import android.os.Bundle
+import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
@@ -17,16 +18,18 @@ import javax.inject.Inject
  */
 abstract class BaseActivity : AppCompatActivity() {
 
-    @Inject lateinit var screenRouter: ScreenRouter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
+        setContentView(layoutResId)
     }
 
-    protected fun observeLoadingStatus(viewModel: BaseViewModel?, resultView: View,
+    @get:LayoutRes
+    protected abstract val layoutResId: Int
+
+    protected fun observeLoadingStatus(viewModel: BaseViewModel, resultView: View,
                                        progressView: View) {
-        viewModel?.loadingStatus?.observe(this, Observer<Boolean> {
+        viewModel.loadingStatus.observe(this, Observer<Boolean> {
             isLoading -> isLoading?.let {
                 resultView.visibility = if (it) GONE else VISIBLE
                 progressView.visibility = if (it) VISIBLE else GONE

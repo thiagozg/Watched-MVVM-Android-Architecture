@@ -7,23 +7,14 @@ android {
         versionCode versions.android.versionCode
         versionName versions.android.versionName
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            debuggable true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
 }
 
 dependencies {
     implementation project(path: ':core')
     implementation project(path: ':home')
     implementation project(path: ':details')
+
+    kapt annotationProcessor()
 
 //    testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'com.android.support.test:runner:1.0.2'

@@ -8,7 +8,7 @@ import br.com.watched.details.DetailsActivity
 /**
  * Created by thiagozg on 30/05/2018.
  */
-class ScreenRouterBO : ScreenRouter {
+object ScreenRouterBO : ScreenRouter {
 
     override fun getIntent(context: Context, screen: ScreenRouter.ScreenBO): Intent? {
         val clazz: Class<*>? = when (screen) {

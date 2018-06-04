@@ -4,6 +4,7 @@ import br.com.watched.WatchedApplication
 import br.com.watched.di.modules.*
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
@@ -17,16 +18,9 @@ import javax.inject.Singleton
     ScreenRouterModule::class,
     BuildersModule::class]
 )
-interface AppComponent {
+interface AppComponent : AndroidInjector<WatchedApplication> {
 
     @Component.Builder
-    interface Builder {
-        @BindsInstance
-        fun application(application: WatchedApplication): Builder
-
-        fun build(): AppComponent
-    }
-
-    fun inject(application: WatchedApplication)
+    abstract class Builder : AndroidInjector.Builder<WatchedApplication>()
 
 }

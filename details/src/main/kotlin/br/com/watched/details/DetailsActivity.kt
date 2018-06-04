@@ -2,25 +2,24 @@ package br.com.watched.details
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
-import br.com.watched.core.R
 import br.com.watched.core.base.BaseActivity
 import br.com.watched.core.model.api.ApiResponse
 import br.com.watched.core.model.domain.DetailsResponseVO
 import br.com.watched.core.util.Constants.KEY_IMDB_ID
 import br.com.watched.core.util.loadGlide
+import br.com.watched.details.R.id.*
 import kotlinx.android.synthetic.main.activity_details.*
 import javax.inject.Inject
 
 /**
  * Created by thiagozg on 18/11/2017.
  */
-class DetailsActivity : BaseActivity() {
+class DetailsActivity(override val layoutResId: Int = R.layout.activity_details) : BaseActivity() {
 
     @Inject lateinit var viewModel: DetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
 
         viewModel.requestDetails(intent.getStringExtra(KEY_IMDB_ID))
         observeLoadingStatus(viewModel, clDetails, loadingIndicator)

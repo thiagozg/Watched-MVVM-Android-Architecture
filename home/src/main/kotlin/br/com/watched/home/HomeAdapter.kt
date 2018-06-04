@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.com.watched.core.R
 import br.com.watched.core.model.domain.SearchResponseVO
 import br.com.watched.core.util.UIListeners
 import br.com.watched.core.util.loadGlide

@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import br.com.watched.core.R
 import br.com.watched.core.base.BaseActivity
 import br.com.watched.core.base.ScreenRouter
 import br.com.watched.core.model.api.ApiResponse
@@ -23,14 +22,14 @@ import br.com.watched.home.R.id.rvResultSearch
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
-class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners.OnClickListener {
+class HomeActivity(override val layoutResId: Int = R.layout.activity_home) :
+        BaseActivity(), SearchView.OnQueryTextListener, UIListeners.OnClickListener {
 
     @Inject lateinit var viewModel: HomeViewModel
+    @Inject lateinit var screenRouter: ScreenRouter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-
         observeLoadingStatus(viewModel, rvResultSearch, loadingIndicator)
         observeSearchResponse()
     }
@@ -90,7 +89,7 @@ class HomeActivity : BaseActivity(), SearchView.OnQueryTextListener, UIListeners
 
     override fun onQueryTextSubmit(query: String): Boolean {
         closeKeyboard()
-        viewModel?.searchByQuery(query)
+        viewModel.searchByQuery(query)
         return true
     }
 
