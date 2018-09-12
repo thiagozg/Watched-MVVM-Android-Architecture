@@ -12,7 +12,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "ENDPOINT", "\"http://www.omdbapi.com/\""
-        buildConfigField "String", "API_KEY", "\"b306a4ed\""
+        buildConfigField "String", "API_KEY", OMDB_API_KEY
     }
 
     buildTypes {
